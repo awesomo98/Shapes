@@ -2,15 +2,16 @@ require 'gosu'
 require_relative 'z_order'
 require_relative 'rectangle'
 require_relative 'square'
+require_relative 'triangle'
 
 class Window < Gosu::Window
-	# draw_line(0, 0, 0, 2, 2, 2, z = 0, mode = :default)
 	def initialize
 		super 640, 480
 		self.caption = "Shapes"
 		@background_image = Gosu::Image.new("black.jpg")
 		@rectangles = []
 		@squares = []
+		@triangles = []
 	end
 
 	def needs_cursor?
@@ -28,9 +29,15 @@ class Window < Gosu::Window
 			@rectangles.push(Rectangle.new(mouse_x, mouse_y))
 		end
 
-		if Gosu::button_down? Gosu::MsRight then
+		if Gosu::button_down? Gosu::KbSpace then
 			@squares.push(Square.new(mouse_x, mouse_y))
 		end
+
+		if Gosu::button_down? Gosu::MsRight then
+			@triangles.push(Triangle.new(mouse_x, mouse_y))
+		end
+
+
 	end
 
 	def draw
