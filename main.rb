@@ -37,7 +37,6 @@ class Window < Gosu::Window
 			@triangles.push(Triangle.new(mouse_x, mouse_y))
 		end
 
-
 	end
 
 	def draw
