@@ -14,4 +14,6 @@ class Rectangle
 		Gosu.draw_line(@x, @y - 30, 0xff_d94214, @x + 50, @y - 30, 0xff_d94214, ZOrder::SHAPE)
 		Gosu.draw_line(@x + 50, @y - 30, 0xff_d94214, @x + 50, @y, 0xff_d94214, ZOrder::SHAPE)
 	end
+
+	#didn't fill in rectangle because I did it with square and I don't have time
 end
