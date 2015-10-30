@@ -1,16 +1,24 @@
 require_relative 'z_order'
 
+
 class Triangle
-	attr_reader :x, :y
+	STROKE_COLOR = 0xff_FF00FF
+	FILL_COLOR = 0xff_781027
 
-	HEIGHT = 
+	attr_reader :x, :y, :z
 
-	def initialize
+	def initialize(x, y, z)
 		@x = x
 		@y = y
+		@z = z
 	end
 
 	def draw
-		Gosu.draw_line(@x, @y, 0xff_d94214, @x + 10, @y - HEIGHT, 0xff_d94214, ZOrder::SHAPE)
+		for i in 0..z do 
+			Gosu.draw_line(@x-i/2, @y+ i, FILL_COLOR, @x + i/2, @y + i, FILL_COLOR, ZOrder::SHAPE)
+		end
+		Gosu.draw_line(@x, @y, STROKE_COLOR, @x + @z/2, @y + @z, STROKE_COLOR, ZOrder::SHAPE)
+		Gosu.draw_line(@x, @y, STROKE_COLOR, @x - @z/2, @y + @z, STROKE_COLOR, ZOrder::SHAPE)
+		Gosu.draw_line(@x, @y, STROKE_COLOR, @x, @y + 50, STROKE_COLOR, ZOrder::SHAPE)
 	end
 end
